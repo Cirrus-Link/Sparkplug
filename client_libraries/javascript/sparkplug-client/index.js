@@ -373,6 +373,13 @@ function SparkplugClient(config) {
         });
 
         /*
+         * 'offline' handler
+         */
+        client.on("offline", function() {
+            sparkplugClient.emit("offline");
+        });
+
+        /*
          * 'message' handler
          */
         client.on('message', function (topic, message) {

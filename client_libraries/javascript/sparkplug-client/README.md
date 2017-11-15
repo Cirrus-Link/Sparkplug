@@ -279,8 +279,8 @@ client.publishDeviceDeath(deviceId, payload);
 ### Receiving events
 
 The client uses an EventEmitter to emit events to device applications.  The
-client emits a "rebirth" event, "command" event, and four MQTT connection
-events: "connect", "reconnect", "error", and "close".
+client emits a "rebirth" event, "command" event, and five MQTT connection
+events: "connect", "reconnect", "offline", "error", and "close".
 
 #### Birth Event
 
@@ -370,6 +370,18 @@ Here is a code example of handling a "reconnect" event:
 ```javascript
 client.on('reconnect', function () {
     console.log("received 'reconnect' event");
+});
+```
+
+#### Offline Event
+
+An "offline" event is emitted when the client cannot contact the server.
+
+Here is a code example of handling an "offline" event:
+
+```javascript
+client.on('offline', function () {
+    console.log("received 'offline' event");
 });
 ```
 
